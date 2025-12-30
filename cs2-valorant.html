@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head><meta charset="UTF-8"><title>CS2 → Valorant</title></head>
+<body>
+  <a href="index.html">⬅ Voltar</a>
+  <h1>Converter sens do CS2 para Valorant</h1>
+
+  <label>Sens CS2: <input id="sens" type="number" step="0.01"></label><br>
+  <button onclick="calcular()">Converter</button>
+
+  <h2 id="resultado"></h2>
+
+  <script>
+    function calcular() {
+      let sens = parseFloat(document.getElementById("sens").value);
+      let sensVal = sens * 0.314;
+      document.getElementById("resultado").innerText =
+        `Sua sens no Valorant seria: ${sensVal.toFixed(2)}`;
+    }
+  </script>
+</body>
+</html>

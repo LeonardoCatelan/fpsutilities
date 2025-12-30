@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Troca de Mouse</title>
+</head>
+<body>
+  <a href="index.html">⬅ Voltar</a>
+  <h1>Calcular sensibilidade após troca de mouse</h1>
+
+  <label>Peso antigo: <input id="pesoAntigo" type="number" step="0.01"></label><br>
+  <label>Peso novo: <input id="pesoNovo" type="number" step="0.01"></label><br>
+  <label>Sens antiga: <input id="sens" type="number" step="0.01"></label><br>
+
+  <button onclick="calcular()">Calcular</button>
+
+  <h2 id="resultado"></h2>
+
+  <script>
+    function calcular() {
+      let pesoAntigo = parseFloat(document.getElementById("pesoAntigo").value);
+      let pesoNovo   = parseFloat(document.getElementById("pesoNovo").value);
+      let sens       = parseFloat(document.getElementById("sens").value);
+
+      let x = (100 * pesoNovo) / pesoAntigo;
+      let novaSens = (0.65 * x) / 100;
+
+      document.getElementById("resultado").innerText =
+        `Sua nova sens é: ${novaSens.toFixed(4)}`;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head><meta charset="UTF-8"><title>Novo DPI</title></head>
+<body>
+  <a href="index.html">⬅ Voltar</a>
+  <h1>Calcular sensibilidade em DPI diferente</h1>
+
+  <label>DPI atual: <input id="dpi" type="number"></label><br>
+  <label>Sens atual: <input id="sens" type="number" step="0.01"></label><br>
+  <label>Novo DPI: <input id="novoDpi" type="number"></label><br>
+
+  <button onclick="calcular()">Calcular</button>
+
+  <h2 id="resultado"></h2>
+
+  <script>
+    function calcular() {
+      let dpi = parseFloat(document.getElementById("dpi").value);
+      let sens = parseFloat(document.getElementById("sens").value);
+      let novoDpi = parseFloat(document.getElementById("novoDpi").value);
+
+      let eDpi = dpi * sens;
+      let novaSens = eDpi / novoDpi;
+
+      document.getElementById("resultado").innerText =
+        `Nova sens: ${novaSens.toFixed(4)}`;
+    }
+  </script>
+</body>
+</html>

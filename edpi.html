@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head><meta charset="UTF-8"><title>e-DPI</title></head>
+<body>
+  <a href="index.html">⬅ Voltar</a>
+  <h1>Descobrir seu e-DPI</h1>
+
+  <label>DPI: <input id="dpi" type="number"></label><br>
+  <label>Sens: <input id="sens" type="number" step="0.01"></label><br>
+
+  <button onclick="calcular()">Calcular</button>
+  <h2 id="resultado"></h2>
+
+  <script>
+    function calcular() {
+      let dpi = parseFloat(document.getElementById("dpi").value);
+      let sens = parseFloat(document.getElementById("sens").value);
+      document.getElementById("resultado").innerText =
+        `Seu e-DPI é: ${dpi * sens}`;
+    }
+  </script>
+</body>
+</html>

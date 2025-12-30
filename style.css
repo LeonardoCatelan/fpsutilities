@@ -10,24 +10,22 @@ body {
   background: #181818;
   color: #fff;
   display: flex;
-  flex-direction: column; /* empilha container e footer verticalmente */
-  align-items: center;    /* centraliza horizontalmente */
+  flex-direction: column;
+  align-items: center;
   min-height: 100vh;
   margin: 0;
+  padding: 0 12px; /* respiro lateral no mobile */
 }
-
-/* -- CONTAINER PRINCIPAL (caixa) -- */
 
 .container {
   background: #222;
-  padding: 30px;
+  padding: 25px;
   border-radius: 10px;
-  width: 100%;
-  max-width: 420px;
+  width: 100%;          /* ocupa toda largura */
+  max-width: 480px;     /* define limite pro desktop ficar bonito */
   text-align: center;
   box-shadow: 0 0 20px rgba(0,0,0,0.4);
-
-  margin-top: 60px; /* espaço visual do topo */
+  margin-top: 40px;
 }
 
 /* -- TEXTOS -- */
@@ -121,4 +119,44 @@ input[type="number"] {
 
 .footer a:hover {
   color: #fff;
+}
+
+/* MOBILE FRIENDLY */
+@media (max-width: 480px) {
+  .container {
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 22px;
+    margin-bottom: 15px;
+  }
+
+  label {
+    font-size: 15px;
+  }
+
+  input[type="number"] {
+    font-size: 16px;   /* evita zoom automático no iPhone */
+    padding: 10px;
+  }
+
+  .btn {
+    font-size: 16px;
+    padding: 14px;
+  }
+
+  .menu-link {
+    font-size: 16px;
+    padding: 14px;
+  }
+
+  .result {
+    font-size: 18px;
+  }
+
+  .footer {
+    font-size: 13px;
+    margin-bottom: 8px;
+  }
 }

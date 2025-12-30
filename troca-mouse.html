@@ -3,27 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <title>Troca de Mouse</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <a href="index.html">⬅ Voltar</a>
-  <h1>Calcular sensibilidade após troca de mouse</h1>
+  <div class="container">
+    <a href="index.html" class="back-link">⬅ Voltar para o menu</a>
+    <h1>Troca de Mouse</h1>
 
-  <label>Peso antigo: <input id="pesoAntigo" type="number" step="0.01"></label><br>
-  <label>Peso novo: <input id="pesoNovo" type="number" step="0.01"></label><br>
-  <label>Sens antiga: <input id="sens" type="number" step="0.01"></label><br>
+    <div class="form-group">
+      <label for="pesoAntigo">Peso do mouse antigo (g):</label>
+      <input id="pesoAntigo" type="number" step="0.01">
+    </div>
 
-  <button onclick="calcular()">Calcular</button>
+    <div class="form-group">
+      <label for="pesoNovo">Peso do mouse novo (g):</label>
+      <input id="pesoNovo" type="number" step="0.01">
+    </div>
 
-  <h2 id="resultado"></h2>
+    <div class="form-group">
+      <label for="sens">Sens que você usava no mouse antigo:</label>
+      <input id="sens" type="number" step="0.01">
+    </div>
+
+    <button class="btn" onclick="calcular()">Calcular nova sens</button>
+
+    <div id="resultado" class="result"></div>
+  </div>
 
   <script>
     function calcular() {
-      let pesoAntigo = parseFloat(document.getElementById("pesoAntigo").value);
-      let pesoNovo   = parseFloat(document.getElementById("pesoNovo").value);
-      let sens       = parseFloat(document.getElementById("sens").value);
+      const pesoAntigo = parseFloat(document.getElementById("pesoAntigo").value);
+      const pesoNovo   = parseFloat(document.getElementById("pesoNovo").value);
+      const sens       = parseFloat(document.getElementById("sens").value);
 
-      let x = (100 * pesoNovo) / pesoAntigo;
-      let novaSens = (0.65 * x) / 100;
+      if (isNaN(pesoAntigo) || isNaN(pesoNovo) || isNaN(sens)) {
+        document.getElementById("resultado").innerText =
+          "Preenche todos os campos primeiro.";
+        return;
+      }
+
+      const x = (100 * pesoNovo) / pesoAntigo;
+      const novaSens = (0.65 * x) / 100;
 
       document.getElementById("resultado").innerText =
         `Sua nova sens é: ${novaSens.toFixed(4)}`;

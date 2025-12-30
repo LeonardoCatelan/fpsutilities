@@ -1,29 +1,52 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head><meta charset="UTF-8"><title>Novo DPI</title></head>
+<head>
+  <meta charset="UTF-8">
+  <title>Sensibilidade em novo DPI</title>
+  <link rel="stylesheet" href="style.css">
+</head>
 <body>
-  <a href="index.html">⬅ Voltar</a>
-  <h1>Calcular sensibilidade em DPI diferente</h1>
+  <div class="container">
+    <a href="index.html" class="back-link">⬅ Voltar para o menu</a>
+    <h1>Sens em DPI diferente</h1>
 
-  <label>DPI atual: <input id="dpi" type="number"></label><br>
-  <label>Sens atual: <input id="sens" type="number" step="0.01"></label><br>
-  <label>Novo DPI: <input id="novoDpi" type="number"></label><br>
+    <div class="form-group">
+      <label for="dpiAtual">DPI atual do seu mouse:</label>
+      <input id="dpiAtual" type="number" step="1">
+    </div>
 
-  <button onclick="calcular()">Calcular</button>
+    <div class="form-group">
+      <label for="sensAtual">Sensibilidade atual:</label>
+      <input id="sensAtual" type="number" step="0.01">
+    </div>
 
-  <h2 id="resultado"></h2>
+    <div class="form-group">
+      <label for="novoDpi">Novo DPI desejado:</label>
+      <input id="novoDpi" type="number" step="1">
+    </div>
+
+    <button class="btn" onclick="calcular()">Calcular nova sens</button>
+
+    <div id="resultado" class="result"></div>
+  </div>
 
   <script>
     function calcular() {
-      let dpi = parseFloat(document.getElementById("dpi").value);
-      let sens = parseFloat(document.getElementById("sens").value);
-      let novoDpi = parseFloat(document.getElementById("novoDpi").value);
+      const dpiAtual  = parseFloat(document.getElementById("dpiAtual").value);
+      const sensAtual = parseFloat(document.getElementById("sensAtual").value);
+      const novoDpi   = parseFloat(document.getElementById("novoDpi").value);
 
-      let eDpi = dpi * sens;
-      let novaSens = eDpi / novoDpi;
+      if (isNaN(dpiAtual) || isNaN(sensAtual) || isNaN(novoDpi) || novoDpi === 0) {
+        document.getElementById("resultado").innerText =
+          "Preenche todos os campos corretamente (novo DPI não pode ser 0).";
+        return;
+      }
+
+      const eDpi = dpiAtual * sensAtual;
+      const novaSens = eDpi / novoDpi;
 
       document.getElementById("resultado").innerText =
-        `Nova sens: ${novaSens.toFixed(4)}`;
+        `Sua nova sensibilidade com ${novoDpi} DPI é: ${novaSens.toFixed(4)}`;
     }
   </script>
 </body>

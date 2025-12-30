@@ -1,21 +1,40 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head><meta charset="UTF-8"><title>CS2 → Valorant</title></head>
+<head>
+  <meta charset="UTF-8">
+  <title>CS2 → Valorant</title>
+  <link rel="stylesheet" href="style.css">
+</head>
 <body>
-  <a href="index.html">⬅ Voltar</a>
-  <h1>Converter sens do CS2 para Valorant</h1>
+  <div class="container">
+    <a href="index.html" class="back-link">⬅ Voltar para o menu</a>
+    <h1>CS2 → Valorant</h1>
 
-  <label>Sens CS2: <input id="sens" type="number" step="0.01"></label><br>
-  <button onclick="calcular()">Converter</button>
+    <div class="form-group">
+      <label for="sensCs2">Sua sensibilidade no CS2:</label>
+      <input id="sensCs2" type="number" step="0.01">
+    </div>
 
-  <h2 id="resultado"></h2>
+    <button class="btn" onclick="converter()">Converter</button>
+
+    <div id="resultado" class="result"></div>
+  </div>
 
   <script>
-    function calcular() {
-      let sens = parseFloat(document.getElementById("sens").value);
-      let sensVal = sens * 0.314;
+    function converter() {
+      const sensCs2 = parseFloat(document.getElementById("sensCs2").value);
+
+      if (isNaN(sensCs2)) {
+        document.getElementById("resultado").innerText =
+          "Digite a sens do CS2 primeiro.";
+        return;
+      }
+
+      // ConverterSensCs2ParaValorant: sens * 0.314
+      const sensValorant = sensCs2 * 0.314;
+
       document.getElementById("resultado").innerText =
-        `Sua sens no Valorant seria: ${sensVal.toFixed(2)}`;
+        `Sua sens no Valorant seria: ${sensValorant.toFixed(2)}`;
     }
   </script>
 </body>
